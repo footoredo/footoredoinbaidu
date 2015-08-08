@@ -16,6 +16,7 @@ var server = http.createServer(function(req, res) {
     console.log(options)
 
     http.get(site + url.parse(req.url, true).path, function(_res) {
+        res.writeHead(200,_res.headers)
         //_res.pipe(res) 
         _res.on('data', function(chunk) {
           res.write(chunk)
